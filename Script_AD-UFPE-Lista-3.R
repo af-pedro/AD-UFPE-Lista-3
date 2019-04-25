@@ -37,9 +37,6 @@ install.packages("ffbase", dependencies = TRUE)
 
 require(ffbase)
 
-
-
-
 dim(TURMAS)
 
 head(TURMAS) 
