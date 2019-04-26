@@ -43,7 +43,6 @@ setwd('..') # move wd para n?vel anterior
 setwd("C:/Users/Pedro/Desktop/Mestrado/Analise de Dados/Material_R/Dados_encontro_1_ufpe/dados_encontro_1_ufpe") 
 
 save.ffdf(TURMAS, dir = "./TURMAS", overwrite = TRUE) # Salvando em formato FFDF
-rm(list =ls())
 
 setwd('..') # move wd para n?vel anterior
 setwd("C:/Users/Pedro/Desktop/Mestrado/Analise de Dados/Material_R/Dados_encontro_1_ufpe/dados_encontro_1_ufpe")
@@ -104,8 +103,13 @@ setwd("C:/Users/Pedro/Desktop/Mestrado/Analise de Dados/Material_R/Dados_encontr
 
 Docentes_NE <- read.csv2(file = "DOCENTES_NORDESTE.CSV", sep = "|")
 
+Cor <- (Docentes_NE$TP_COR_RACA)
+table(Cor)
 
-View(Docentes_NE)
-dim(Docentes_NE)
+Nao_declarados_cor <- (1240352 * 100 / 2930354)
+Pretos_e_Pardos_cor <- ((11972 + 968682) * 100 / 2930354)
+
+Nao_declarados_cor
+Pretos_e_Pardos_cor
 
 
