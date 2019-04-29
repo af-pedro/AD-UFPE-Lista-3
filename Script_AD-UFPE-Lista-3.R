@@ -1,5 +1,7 @@
 #### Questao 1 ####
 
+## Versionamento no github
+
 #### Questao 2 ####
 
 x <- 2
@@ -39,18 +41,18 @@ setwd("C:/Users/Pedro/Desktop/Mestrado/Analise de Dados/Material_R/Dados_encontr
 
 TURMAS <- read.csv2.ffdf(file = "TURMAS.CSV",  sep = "|") # Carregando dados
 
-setwd('..') # move wd para n?vel anterior 
+setwd('..') # move wd para nivel anterior 
 setwd("C:/Users/Pedro/Desktop/Mestrado/Analise de Dados/Material_R/Dados_encontro_1_ufpe/dados_encontro_1_ufpe") 
 
 save.ffdf(TURMAS, dir = "./TURMAS", overwrite = TRUE) # Salvando em formato FFDF
 
-setwd('..') # move wd para n?vel anterior
+setwd('..') # move wd para nivel anterior
 setwd("C:/Users/Pedro/Desktop/Mestrado/Analise de Dados/Material_R/Dados_encontro_1_ufpe/dados_encontro_1_ufpe")
 
 load.ffdf(dir = "./TURMAS") # arregando a base
 
 TURMAS_PE <-subset(TURMAS, CO_UF==26) # Filtrando para Pernambuco
-dim(TURMAS_PE) # Conferindo a partir da dimens?o se foi feito o filtro
+dim(TURMAS_PE) # Conferindo a partir da dimensao se foi feito o filtro
 
 TURMAS_PE <- as.data.frame(TURMAS_PE) # Transformando em Data Frame
 
@@ -94,22 +96,28 @@ barplot(TURMAS_PE$NU_MATRICULAS)
 
 #### Questao 6 ####
 
-install.packages("ffbase", dependencies = TRUE) # Instalando pacote
-
-require(ffbase) # Carregando pacote 
+install.packages("ffbase", dependencies = TRUE)
+require(ffbase)
 
 setwd('..') # move wd para n?vel anterior 
 setwd("C:/Users/Pedro/Desktop/Mestrado/Analise de Dados/Material_R/Dados_encontro_1_ufpe/dados_encontro_1_ufpe")
 
 Docentes_NE <- read.csv2(file = "DOCENTES_NORDESTE.CSV", sep = "|")
 
-Cor <- (Docentes_NE$TP_COR_RACA)
-table(Cor)
+setwd('..') # move wd para nivel anterior 
+setwd("C:/Users/Pedro/Desktop/Mestrado/Analise de Dados/Material_R/Dados_encontro_1_ufpe/dados_encontro_1_ufpe") 
 
-Nao_declarados_cor <- (1240352 * 100 / 2930354)
-Pretos_e_Pardos_cor <- ((11972 + 968682) * 100 / 2930354)
+save.ffdf(DOCENTES_NORDESTE, dir = "./DOCENTES_NORDESTE", overwrite = TRUE) # Salvando em formato FFDF
 
-Nao_declarados_cor
-Pretos_e_Pardos_cor
+setwd('..') # move wd para nivel anterior
+setwd("C:/Users/Pedro/Desktop/Mestrado/Analise de Dados/Material_R/Dados_encontro_1_ufpe/dados_encontro_1_ufpe")
+
+load.ffdf(dir = "./DOCENTES_NORDESTE") # arregando a base
+
+DOCENTES_PE <-subset(DOCENTES_NORDESTE, CO_UF==26) # Filtrando para Pernambuco
+
+prop.table(table(DOCENTES_PE$TP_COR_RACA))*100 # calculando a %
+
+plot(prop.table(table(DOCENTES_PE$TP_COR_RACA))*100) # grafico
 
 
