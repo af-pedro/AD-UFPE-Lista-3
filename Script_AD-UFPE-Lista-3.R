@@ -82,60 +82,60 @@ load("turmas_pe_censo_escolar_2016.RData")
 
 filter(N)
 
-mean(TURMAS_PE$NU_MATRICULAS)
+mean(TURMAS_PE$NU_MATRICULAS) # media
 
-median(TURMAS_PE$NU_MATRICULAS)
+median(TURMAS_PE$NU_MATRICULAS) # mediada
 
 sd(TURMAS_PE$NU_MATRICULAS)
 
-boxplot(TURMAS_PE$NU_MATRICULAS)
+boxplot(TURMAS_PE$NU_MATRICULAS) # grafico 1
 
-plot(TURMAS_PE$NU_MATRICULAS)
+plot(TURMAS_PE$NU_MATRICULAS) # grafico 2
 
-barplot(TURMAS_PE$NU_MATRICULAS)
+barplot(TURMAS_PE$NU_MATRICULAS) #grafico 3
 
 ####Questão 6####
 
 #A
 
-install.packages("ffbase", dependencies = TRUE) #instalando pacote
-require(ffbase) #carregando pacote 
+install.packages("ffbase", dependencies = TRUE) # instalando pacote
+require(ffbase) # carregando pacote 
 
 setwd('..')
-setwd("./dados_encontro_1_ufpe/") #puxando repositório
+setwd("./dados_encontro_1_ufpe/") # repositório
 
-DOCENTES_NE <- read.csv2(file = "DOCENTES_NORDESTE.csv",  sep = "|") #carregando dados
+DOCENTES_NE <- read.csv2(file = "DOCENTES_NORDESTE.csv",  sep = "|") # carregando dados
 
-View(DOCENTES_NE) #analisando tabela
+View(DOCENTES_NE) # analisando tabela
 
-docentes_pe <- subset(DOCENTES_NE, CO_UF == "26") #extraindo os docentes de PE
-docentes_pe <- as.data.frame(docentes_pe) #transformando em dataframe
+docentes_pe <- subset(DOCENTES_NE, CO_UF == "26") # extraindo os docentes de PE
+docentes_pe <- as.data.frame(docentes_pe) # transformando em dataframe
 
-dim(docentes_pe) #buscando a dimensão
+dim(docentes_pe) # buscando a dimensão
 
-table(docentes_pe$TP_COR_RACA) #vizualizando a tabela
+table(docentes_pe$TP_COR_RACA) # vizualizando a tabela
 
-prop.table(table(docentes_pe$TP_COR_RACA))*100 #encontrando a porcentagem
+prop.table(table(docentes_pe$TP_COR_RACA))*100 # porcentagem
 
-plot(prop.table(table(docentes_pe$TP_COR_RACA))*100) #gerando gráficos por brincadeira
+plot(prop.table(table(docentes_pe$TP_COR_RACA))*100) # gráficos 1
 
 install.package ("tidyverse")
-require(tidyverse) #requerendo tidyverse
+require(tidyverse) # requerendo tidyverse
 
-ggplot(docentes_pe, aes(prop.table(docentes_pe$TP_COR_RACA)*100))+geom_bar() #outro gráfico
+ggplot(docentes_pe, aes(prop.table(docentes_pe$TP_COR_RACA)*100))+geom_bar() # gráfico 2
 
 #B
   
-install.packages("ffbase", dependencies = TRUE) #instalando pacote
+install.packages("ffbase", dependencies = TRUE) # instalando pacote
 require(ffbase) #carregando pacote 
  
-setwd("./dados_encontro_1_ufpe/") #puxando diretório
+setwd("./dados_encontro_1_ufpe/") # chamando o diretório
 
-View(DOCENTES_NE) #analisando dados
+View(DOCENTES_NE) # analisando dados
 
-prop.table(table(docentes_pe$TP_COR_RACA))*100 #encontrando a porcentagem
+prop.table(table(docentes_pe$TP_COR_RACA))*100 # % de cor
 
-Soma_pretos_pardos <- 3.6 + 27.8 #soma das porcentagens de pretos e pardos
-Soma_pretos_pardos #resultado da soma
+Soma_pretos_pardos <- 3.6 + 27.8 # soma das % de pretos e pardos
+Soma_pretos_pardos # resultado
 
 
