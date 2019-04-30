@@ -94,30 +94,48 @@ plot(TURMAS_PE$NU_MATRICULAS)
 
 barplot(TURMAS_PE$NU_MATRICULAS)
 
-#### Questao 6 ####
+####Questão 6####
 
-install.packages("ffbase", dependencies = TRUE)
-require(ffbase)
+#A
 
-setwd('..') # move wd para n?vel anterior 
-setwd("C:/Users/Pedro/Desktop/Mestrado/Analise de Dados/Material_R/Dados_encontro_1_ufpe/dados_encontro_1_ufpe")
+install.packages("ffbase", dependencies = TRUE) #instalando pacote
+require(ffbase) #carregando pacote 
 
-Docentes_NE <- read.csv2(file = "DOCENTES_NORDESTE.CSV", sep = "|")
+setwd('..')
+setwd("./dados_encontro_1_ufpe/") #puxando repositório
 
-setwd('..') # move wd para nivel anterior 
-setwd("C:/Users/Pedro/Desktop/Mestrado/Analise de Dados/Material_R/Dados_encontro_1_ufpe/dados_encontro_1_ufpe") 
+DOCENTES_NE <- read.csv2(file = "DOCENTES_NORDESTE.csv",  sep = "|") #carregando dados
 
-save.ffdf(DOCENTES_NORDESTE, dir = "./DOCENTES_NORDESTE", overwrite = TRUE) # Salvando em formato FFDF
+View(DOCENTES_NE) #analisando tabela
 
-setwd('..') # move wd para nivel anterior
-setwd("C:/Users/Pedro/Desktop/Mestrado/Analise de Dados/Material_R/Dados_encontro_1_ufpe/dados_encontro_1_ufpe")
+docentes_pe <- subset(DOCENTES_NE, CO_UF == "26") #extraindo os docentes de PE
+docentes_pe <- as.data.frame(docentes_pe) #transformando em dataframe
 
-load.ffdf(dir = "./DOCENTES_NORDESTE") # arregando a base
+dim(docentes_pe) #buscando a dimensão
 
-DOCENTES_PE <-subset(DOCENTES_NORDESTE, CO_UF==26) # Filtrando para Pernambuco
+table(docentes_pe$TP_COR_RACA) #vizualizando a tabela
 
-prop.table(table(DOCENTES_PE$TP_COR_RACA))*100 # calculando a %
+prop.table(table(docentes_pe$TP_COR_RACA))*100 #encontrando a porcentagem
 
-plot(prop.table(table(DOCENTES_PE$TP_COR_RACA))*100) # grafico
+plot(prop.table(table(docentes_pe$TP_COR_RACA))*100) #gerando gráficos por brincadeira
+
+install.package ("tidyverse")
+require(tidyverse) #requerendo tidyverse
+
+ggplot(docentes_pe, aes(prop.table(docentes_pe$TP_COR_RACA)*100))+geom_bar() #outro gráfico
+
+#B
+  
+install.packages("ffbase", dependencies = TRUE) #instalando pacote
+require(ffbase) #carregando pacote 
+ 
+setwd("./dados_encontro_1_ufpe/") #puxando diretório
+
+View(DOCENTES_NE) #analisando dados
+
+prop.table(table(docentes_pe$TP_COR_RACA))*100 #encontrando a porcentagem
+
+Soma_pretos_pardos <- 3.6 + 27.8 #soma das porcentagens de pretos e pardos
+Soma_pretos_pardos #resultado da soma
 
 
